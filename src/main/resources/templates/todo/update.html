@@ -1,0 +1,20 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ToDos</title>
+    <div th:replace="common/imports :: imports(hello='update')">
+    </div>
+</head>
+<body>
+    <div class="container">
+        <form method="POST" th:action="@{/todos/update}" th:object="${todo}">
+            <input class="form-control" type="text" th:field="*{id}" readonly>
+            <input class="form-control" type="text" th:field="*{zadanie}">
+            <input class="form-control" type="date" th:field="*{termin}">
+            <select class="form-control" th:field="*{status}">
+                <option th:each="status : ${statusList}" th:value="${status}" th:text="${status}"></option>
+            </select>
+            <input class="btn btn-primary" type="submit">
+        </form>
+    </div>
+</body>
+</html>
